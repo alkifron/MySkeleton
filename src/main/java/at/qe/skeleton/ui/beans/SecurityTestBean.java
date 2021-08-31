@@ -18,17 +18,6 @@ public class SecurityTestBean {
     private boolean showOkDialog = false;
     private String performedAction = "NONE";
 
-    // :TODO: Fix the corresponding vulnerability , cf. http://localhost:8080/secured/test.xhtml
-    private String testString = "CHANGE ME";
-
-    public String getTestString() {
-        return testString;
-    }
-
-    public void setTestString(String testString) {
-        this.testString = testString;
-    }
-
     public boolean isShowOkDialog() {
         return showOkDialog;
     }

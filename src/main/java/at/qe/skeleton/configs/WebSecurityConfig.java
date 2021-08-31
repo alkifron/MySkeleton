@@ -10,10 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import at.qe.skeleton.spring.CustomizedLogoutSuccessHandler;
 
 /**
  * Spring configuration for web security.
@@ -29,11 +26,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    @Bean
-    protected LogoutSuccessHandler logoutSuccessHandler() {
-    	return new CustomizedLogoutSuccessHandler();
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -45,8 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-                .logoutSuccessUrl("/login.xhtml")
-                .logoutSuccessHandler(this.logoutSuccessHandler());
+                .logoutSuccessUrl("/login.xhtml");
 
         http.authorizeRequests()
                 //Permit access to the H2 console
@@ -61,8 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/secured/**")
                 .hasAnyAuthority("ADMIN", "MANAGER", "EMPLOYEE")
                 // Allow only certain roles to use websockets (only logged in users)
-                .antMatchers("/omnifaces.push/**")
-                .hasAnyAuthority("ADMIN", "MANAGER", "EMPLOYEE")
                 .and().formLogin()
                 .loginPage("/login.xhtml")
                 .loginProcessingUrl("/login")

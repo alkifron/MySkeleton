@@ -25,6 +25,6 @@ public class CustomServletContextInitializer implements ServletContextInitialize
         sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", "true");
         // websockets configuration
         sc.setInitParameter("javax.faces.ENABLE_CDI_RESOLVER_CHAIN", "true");
-        sc.setInitParameter("org.omnifaces.SOCKET_ENDPOINT_ENABLED", "true");
+
     }
 }
