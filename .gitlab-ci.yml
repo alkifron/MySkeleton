@@ -1,0 +1,16 @@
+image: maven:3.3.9-jdk-8
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  script:
+    - echo "Running unit tests..."
+    - mvn test
