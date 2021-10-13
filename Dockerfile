@@ -8,6 +8,7 @@ COPY settings.xml /.m2
 # COPY oclint.sh /
 
 FROM builder AS ci
+  RUN ls -l /.m2
   RUN mvn -s .m2/settings.xml --batch-mode test
   RUN mvn -s .m2/settings.xml --batch-mode verify sonar:sonar
 # RUN apt-get update -y \
