@@ -8,8 +8,8 @@ stages:          # List of stages for jobs, and their order of execution
 variables:
   CI_REGISTRY_IMAGE_DEPENDENCIES: "${CI_REGISTRY_IMAGE}/skeleton_dependencies"
   CI_REGISTRY_IMAGE_RELEASE: "${CI_REGISTRY_IMAGE}/maven4skeleton"
-  DOCKER_HOST: docker.uibk.ac.at:443
-  DOCKER_TLS_CERTDIR: "/certs"
+#  DOCKER_HOST: docker.uibk.ac.at
+#  DOCKER_TLS_CERTDIR: "/certs"
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
