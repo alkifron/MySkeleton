@@ -7,8 +7,8 @@ COPY .m2 /
 # COPY oclint.sh /
 
 FROM builder AS ci
-  RUN mvn test
-  RUN mvn verify sonar:sonar
+  RUN mvn -s .m2/settings.xml --batch-mode test
+  RUN mvn -s .m2/settings.xml --batch-mode verify sonar:sonar
 # RUN apt-get update -y \
 #    && apt-get install -y python3-pip python3-sphinx  -y --no-install-recommends \
 #    && pip3 install --no-cache-dir coverage anybadge pylint pylint-exit flake8 twine \
