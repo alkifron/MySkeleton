@@ -10,7 +10,7 @@ FROM builder AS ci
   RUN ls -l /.m2
   RUN echo ${SONAR_HOST_URL} ${SONAR_PROJECT_KEY}
   RUN mvn -s .m2/settings.xml --batch-mode test
-  RUN mvn -s .m2/settings.xml --batch-mode  -Dsonar.projectKey=${SONAR_PROJECT_KEY} verify sonar:sonar
+  RUN mvn -s .m2/settings.xml --batch-mode -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}  verify sonar:sonar
 # RUN apt-get update -y \
 #    && apt-get install -y python3-pip python3-sphinx  -y --no-install-recommends \
 #    && pip3 install --no-cache-dir coverage anybadge pylint pylint-exit flake8 twine \
