@@ -41,5 +41,5 @@ release_container:
     - docker build --target release --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
     - docker push $CI_REGISTRY_IMAGE_RELEASE:latest
     - docker push $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG
-  only:
-   - tags
+#  only:
+#   - tags
