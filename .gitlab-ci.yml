@@ -33,6 +33,7 @@ sonarqube-check:
 
 release_container:
   stage: DeployContainer
+  image: docker:19.03.12
   services:
     - docker:19.03.12-dind
 #  before_script:
