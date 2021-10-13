@@ -42,7 +42,8 @@ release_container:
 #    - echo ${CI_REGISTRY_PASSWORD} | docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} --password-stdin
   script:
     - echo $CI_COMMIT_TAG
-    - docker build --target release --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
+    - docker build --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
+#    - docker build --target release --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
     - docker push $CI_REGISTRY_IMAGE_RELEASE:latest
     - docker push $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG
   only:
