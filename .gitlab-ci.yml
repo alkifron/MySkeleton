@@ -39,9 +39,9 @@ release_container:
 #  before_script:
 #    - echo ${CI_REGISTRY_PASSWORD} | docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} --password-stdin
   script:
-    - echo $CI_COMMIT_SHORT_SHA
-     - docker build --target release --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_SHORT_SHA .
+    - echo $CI_COMMIT_TAG
+     - docker build --target release --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_SHORT_TAG .
      - docker push $CI_REGISTRY_IMAGE_RELEASE:latest
-    - docker push $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_SHORT_SHA
-#  only:
-#   - tags
+    - docker push $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_SHORT_TAG
+  only:
+   - tags
