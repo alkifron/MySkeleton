@@ -32,7 +32,7 @@ sonarqube-check:
   allow_failure: true
 
 release_container:
-  stage: Deploy
+  stage: DeployContainer
   services:
     - docker:19.03.12-dind
   before_script:
@@ -41,4 +41,5 @@ release_container:
     - docker build --target release --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
     - docker push $CI_REGISTRY_IMAGE_RELEASE:latest
     - docker push $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG
-    
+  only:
+   - tags
