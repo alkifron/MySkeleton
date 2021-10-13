@@ -3,7 +3,7 @@
 FROM maven:3.8.2-jdk-11 AS builder
 COPY pom.xml /
 COPY .m2 /
-COPY settings.xml /.m2
+COPY .m2/settings.xml /.m2
 # COPY llvm.sh /
 # COPY oclint.sh /
 
