@@ -13,7 +13,7 @@ COPY .m2/settings.xml /.m2/settings.xml
 
 FROM builder AS ci
   RUN ls -l /.m2
-  RUN echo ${SONAR_HOST_URL} ${SONAR_PROJECT_KEY}
+  RUN echo "-->" ${SONAR_HOST_URL} ${SONAR_PROJECT_KEY} "<--"
   RUN mvn -s .m2/settings.xml --batch-mode test
   RUN mvn -s .m2/settings.xml --batch-mode -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN}  verify sonar:sonar
 # RUN apt-get update -y \
