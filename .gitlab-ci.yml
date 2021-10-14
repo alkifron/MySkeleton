@@ -1,4 +1,6 @@
-image: c703257/skeletontests/maven4skeleton:latest
+image:
+  repository: docker.uibk.ac.at:443/c703257/skeletontests/maven4skeleton
+  tag: latest
 
 stages:          # List of stages for jobs, and their order of execution
   - test
