@@ -1,4 +1,4 @@
-image: maven:3.8.2-jdk-11
+image: c703257/skeletontests/maven4skeleton:latest
 
 stages:          # List of stages for jobs, and their order of execution
   - test
@@ -16,7 +16,7 @@ unit-test-job:   # This job runs in the test stage.
   script:
     - echo "Running unit tests..."
     - mvn test
-  when: manual
+#  when: manual
 
 sonarqube-check:
   stage: SonarCheck
@@ -31,7 +31,7 @@ sonarqube-check:
     - echo Running sonar analysis for ${SONAR_PROJECT_KEY}
     - mvn -Dsonar.projectKey=${SONAR_PROJECT_KEY} verify sonar:sonar
   allow_failure: true
-  when: manual
+#  when: manual
   
 release_container:
   stage: DeployContainer
