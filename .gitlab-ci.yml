@@ -11,6 +11,7 @@ variables:
   CI_REGISTRY_IMAGE_RELEASE: "${CI_REGISTRY_IMAGE}/maven4skeleton"
 
 unit-test-job:   # This job runs in the test stage.
+  image: docker.uibk.ac.at:443/c703257/skeletontests/maven4skeleton
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
     - echo "Running unit tests..."
