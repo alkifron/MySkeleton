@@ -42,7 +42,8 @@ release_container:
 #    - echo ${CI_REGISTRY_PASSWORD} | docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} --password-stdin
   script:
     - echo "-->" $CI_COMMIT_TAG ${SONAR_PROJECT_KEY} "<--"
-    - docker build --build-arg SONAR_PROJECT_KEY=${SONAR_PROJECT_KEY} --build-arg SONAR_HOST_URL=${SONAR_HOST_URL} --build-arg SONAR_TOKEN=${SONAR_TOKEN}  --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
+    - docker build --build-arg SONAR_PROJECT_KEY=${SONAR_PROJECT_KEY} --build-arg SONAR_HOST_URL=https://qe-sonarqube.uibk.ac.at
+ --build-arg SONAR_TOKEN=${SONAR_TOKEN}  --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
 #    - docker build --target release --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
     - docker push $CI_REGISTRY_IMAGE_RELEASE:latest
     - docker push $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG
