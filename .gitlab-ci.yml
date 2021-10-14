@@ -19,7 +19,7 @@ unit-test-job:   # This job runs in the test stage.
   script:
     - echo "Running unit tests..."
     - mvn test
-#  when: manual
+  when: manual
 
 sonarqube-check:
   stage: SonarCheck
@@ -35,7 +35,7 @@ sonarqube-check:
     - echo Running sonar analysis for ${SONAR_PROJECT_KEY}
     - mvn -Dsonar.projectKey=${SONAR_PROJECT_KEY} verify sonar:sonar
   allow_failure: true
-#  when: manual
+  when: manual
   
 release_container:
   stage: DeployContainer
