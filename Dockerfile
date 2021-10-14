@@ -12,6 +12,11 @@ COPY .m2/settings.xml /.m2/settings.xml
 # COPY oclint.sh /
 
 FROM builder AS ci
+
+ARG SONAR_HOST_URL
+ARG SONAR_PROJECT_KEY
+ARG SONAR_TOKEN
+
   RUN ls -l /.m2
   RUN echo "-->" ${SONAR_HOST_URL} ${SONAR_PROJECT_KEY} "<--"
   RUN mvn -s .m2/settings.xml --batch-mode test
