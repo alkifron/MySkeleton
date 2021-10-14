@@ -10,8 +10,6 @@ stages:          # List of stages for jobs, and their order of execution
 variables:
   CI_REGISTRY_IMAGE_DEPENDENCIES: "${CI_REGISTRY_IMAGE}/skeleton_dependencies"
   CI_REGISTRY_IMAGE_RELEASE: "${CI_REGISTRY_IMAGE}/maven4skeleton"
-#  DOCKER_HOST: docker.uibk.ac.at
-#  DOCKER_TLS_CERTDIR: "/certs"
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
@@ -44,8 +42,6 @@ release_container:
     - docker info
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
-#  before_script:
-#    - echo ${CI_REGISTRY_PASSWORD} | docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} --password-stdin
   script:
     - echo "-->" $CI_COMMIT_TAG ${SONAR_PROJECT_KEY} "<--"
     - docker build --build-arg SONAR_PROJECT_KEY=${SONAR_PROJECT_KEY} --build-arg SONAR_HOST_URL=${SONAR_HOST_URL} --build-arg SONAR_TOKEN=${SONAR_TOKEN}  --tag $CI_REGISTRY_IMAGE_RELEASE:latest --tag $CI_REGISTRY_IMAGE_RELEASE:$CI_COMMIT_TAG .
