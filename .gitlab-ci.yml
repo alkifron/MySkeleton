@@ -29,7 +29,7 @@ sonarqube-check:
       - .sonar/cache
   script:
     - echo Running sonar analysis for ${SONAR_PROJECT_KEY}
-    - mvn -Dsonar.projectKey=${SONAR_PROJECT_KEY} verify sonar:sonar
+    - mvn -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.projectName=${SONAR_PROJECT_KEY} verify sonar:sonar
   allow_failure: true
   
 release_container:
