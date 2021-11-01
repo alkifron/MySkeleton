@@ -1,5 +1,5 @@
-# image: maven:3.8.2-jdk-11
-image: c703257/skeletontests/maven4skeleton:latest
+image: maven:3.8.2-jdk-11
+# image: c703257/skeletontests/maven4skeleton:latest
 
 
 stages:          # List of stages for jobs, and their order of execution
@@ -16,7 +16,7 @@ unit-test-job:   # This job runs in the test stage.
   script:
     - echo "Running unit tests..."
     - mvn test
-  when: manual
+  allow_failure: true
 
 sonarqube-check:
   stage: SonarCheck
