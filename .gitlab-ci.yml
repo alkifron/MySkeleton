@@ -1,5 +1,5 @@
-# image: maven:3.8.2-jdk-11
-image: c703257/skeletontests/maven4skeleton:latest
+image: maven:3.8.2-jdk-11
+# c703257/skeletontests/maven4skeleton:latest
 
 stages:          # List of stages for jobs, and their order of execution
   - test
@@ -19,6 +19,7 @@ unit-test-job:   # This job runs in the test stage.
 
 sonarqube-check:
   stage: SonarCheck
+  image: docker.uibk.ac.at:443/c703257/skeletontests/maven4skeleton
   variables:
     SONAR_USER_HOME: "${CI_PROJECT_DIR}/code/.sonar"
     GIT_DEPTH: "0"
