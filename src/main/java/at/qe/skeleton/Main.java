@@ -32,7 +32,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  */
 @ComponentScan(basePackages = "at.qe.skeleton", excludeFilters = @Filter(type = FilterType.REGEX, pattern = "at.qe.skeleton.ui.websockets.*"))
 public class Main extends SpringBootServletInitializer {
-    //adding a small testing line to see any difference
+    //adding a small testing line to see any differenceccxz
     public static void main(String[] args) {
             SpringApplication.run(Main.class, args);
     }
